@@ -11,10 +11,10 @@ class Project(info: ProjectInfo) extends DefaultProject(info) with IdeaProject {
 
   // publish content to my local maven repository (currently a git repo in github.com)
   override def managedStyle = ManagedStyle.Maven
-  val publishTo = Resolver.file("renalias-repo", new java.io.File("..\\phunkphorce.github.com\\maven"))
+  val publishTo = Resolver.file("renalias-repo", new java.io.File("../phunkphorce.github.com/maven"))
 
   val specs = "org.scala-tools.testing" %% "specs" % "1.6.8" % "test"
-  val log_lib = "ch.qos.logback" % "logback-classic" % "0.9.26"
+  val log_lib = "ch.qos.logback" % "logback-classic" % "0.9.28"
 
   // this custom version of configgy is in my own maven repository
   val renalias_repo = "renalias.net Repository" at "http://phunkphorce.github.com/maven"
