@@ -34,8 +34,14 @@ class Config(val file:String) extends Logging {
 	/**
 	 * Return the value for the given key, or throw an Exception if None
 	 */
-	def getString_!(key:String) = getString(key).getOrElse({throw new ConfigKeyNotFoundException(key); ""})
+	def getString_!(key:String):String = getString(key).getOrElse({throw new ConfigKeyNotFoundException(key); ""})
 
 	def getString(key: String, default: String) = config.getString(key, default)
 	def getInt(key:String, default: Int) = config.getInt(key, default)
+
+  /**
+   * Returns the value of retrieving the given string based on the key after processing
+   * it through the given function
+   */
+  def getStringF(name:String, f:(String)=>String) = f(getString_!(name))
 }
