@@ -15,5 +15,8 @@ class Project(info: ProjectInfo) extends DefaultProject(info) with IdeaProject {
 
   val specs = "org.scala-tools.testing" %% "specs" % "1.6.8" % "test"
   val log_lib = "ch.qos.logback" % "logback-classic" % "0.9.26"
-  val configgy = "net.lag" % "configgy" % "2.0.0" intransitive()
+
+  // this custom version of configgy is in my own maven repository
+  val renalias_repo = "renalias.net Repository" at "http://phunkphorce.github.com/maven"
+  val configgy = "net.lag" %% "configgy-nolog" % "2.0.2" withSources()
 }
